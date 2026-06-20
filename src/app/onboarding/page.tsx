@@ -39,7 +39,7 @@ export default function Onboarding() {
       age,
       targetExams: selectedExams,
       isGuest: profile?.isGuest ?? false,
-    } as any; // Temporary cast to bypass import missing for UserProfile. Wait, I should import it.
+    } as { name: string; age: string; targetExams: string[]; isGuest: boolean; uid?: string };
     
     setProfile(newProfile);
     

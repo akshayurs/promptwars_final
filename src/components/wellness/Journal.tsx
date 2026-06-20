@@ -28,7 +28,7 @@ export function Journal() {
       const rawResponse = await getGeminiResponse(prompt, "You are a backend JSON generator. Only output raw JSON, nothing else.");
       
       // Parse the JSON from the markdown block if necessary
-      let jsonStr = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+      const jsonStr = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
       let parsed = { feedback: "Thank you for sharing your thoughts. I'm always here for you.", points: 5 };
       
       try {
@@ -122,7 +122,7 @@ export function Journal() {
                 <Sparkles className="w-3 h-3" /> +{journal.pointsAwarded} HP
               </span>
             </div>
-            <p className="text-sm md:text-base leading-relaxed mb-4 text-foreground/90">"{journal.text}"</p>
+            <p className="text-sm md:text-base leading-relaxed mb-4 text-foreground/90">&quot;{journal.text}&quot;</p>
             <div className="bg-accent/10 border border-accent/20 rounded-lg p-3 text-sm italic font-medium text-foreground/80">
               <span className="font-bold text-accent-foreground mr-1">Pebbl:</span> {journal.feedback}
             </div>

@@ -14,8 +14,7 @@ export async function getGeminiResponse(prompt: string, context?: string): Promi
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: fullPrompt,
-      // @ts-expect-error Google GenAI SDK types might be missing 'tools' in this version
-      tools: [{ googleSearch: {} }],
+      tools: [{ googleSearch: {} } as unknown as never],
     });
     return response.text || "";
   } catch (error: unknown) {
@@ -52,7 +51,7 @@ Return a JSON object with EXACTLY the following structure (no markdown formattin
     
     const textResp = (response.text || "").trim().replace(/^```json/, '').replace(/```$/, '').trim();
     return JSON.parse(textResp);
-  } catch (error: unknown) {
+  } catch {
     return { rockHealthChange: 0, mossLevelChange: 0, analysis: "Failed to analyze sentiment." };
   }
 }

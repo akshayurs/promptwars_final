@@ -18,6 +18,7 @@ export function Timer() {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
     } else if (timeLeft === 0 && isActive) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsActive(false);
       // Reward user for completing a pomodoro (scaling reward by minutes could be fun!)
       const rewardPoints = Math.floor(selectedMinutes / 5);

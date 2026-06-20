@@ -129,7 +129,7 @@ export function VoiceChat() {
         const cachedNews = localStorage.getItem('pebbl_news_cache');
         if (cachedNews) {
           const parsed = JSON.parse(cachedNews);
-          newsContext = "Recent News Headlines: " + parsed.data.map((n: any) => n.title).join(" | ");
+          newsContext = "Recent News Headlines: " + parsed.data.map((n: { title: string }) => n.title).join(" | ");
         }
       } catch (err) {}
 

@@ -89,9 +89,11 @@ export function BreathingGame() {
       } else {
         // Transition phases: Inhale (4s) -> Hold (7s) -> Exhale (8s)
         if (phase === 'idle' || phase === 'exhale') {
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setPhase('inhale');
           setTimeLeft(4);
         } else if (phase === 'inhale') {
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setPhase('hold');
           setTimeLeft(7);
         } else if (phase === 'hold') {
@@ -184,9 +186,7 @@ export function BreathingGame() {
               </motion.p>
             </>
           ) : (
-            <p className="text-sm font-medium text-foreground/60 italic max-w-[280px] mx-auto mt-2 mb-4 leading-relaxed">
-              "Deep breathing lowers cortisol levels, slowing your heart rate and instantly neutralizing exam anxiety."
-            </p>
+            <p className="text-foreground/80 leading-relaxed mb-6">Feeling overwhelmed? Let&apos;s reset your nervous system. Follow the visual guide: inhale deeply, hold, and release. This 4-7-8 method instantly lowers cortisol and restores your focus.</p>
           )}
 
           <div className="mt-6 z-10 w-full flex justify-center">

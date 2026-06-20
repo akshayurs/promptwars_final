@@ -65,7 +65,7 @@ export const useStore = create<PebblStore>()(
         set((state) => {
           const newHealth = updates.rockHealth ?? state.wellness.rockHealth;
           // Ensure history is initialized
-          let newHistory = [...(state.wellness.history || [])];
+          const newHistory = [...(state.wellness.history || [])];
           
           // If health changed, add a new data point to history
           if (updates.rockHealth !== undefined && updates.rockHealth !== state.wellness.rockHealth) {

@@ -35,7 +35,7 @@ export const ParticleBackground = () => {
     };
     initParticles();
 
-    let mouse = { x: -1000, y: -1000 };
+    const mouse = { x: -1000, y: -1000 };
     const onMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
@@ -58,19 +58,19 @@ export const ParticleBackground = () => {
       ctx.fillStyle = 'rgba(128, 128, 128, 0.8)';
 
       for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
+        const p = particles[i];
 
-        let dx = mouse.x - p.x;
-        let dy = mouse.y - p.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
         // Repulsion logic
-        let maxDistance = 120;
+        const maxDistance = 120;
 
         if (distance < maxDistance) {
-          let forceDirectionX = dx / distance;
-          let forceDirectionY = dy / distance;
-          let force = (maxDistance - distance) / maxDistance;
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          const force = (maxDistance - distance) / maxDistance;
 
           // Push particles away from the mouse
           p.x -= forceDirectionX * force * 4;
