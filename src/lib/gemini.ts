@@ -51,7 +51,7 @@ Return a JSON object with EXACTLY the following structure (no markdown formattin
       contents: prompt,
     });
     
-    const textResp = response.text.trim().replace(/^```json/, '').replace(/```$/, '').trim();
+    const textResp = (response.text || "").trim().replace(/^```json/, '').replace(/```$/, '').trim();
     return JSON.parse(textResp);
   } catch (error: unknown) {
     console.error("Sentiment Analysis Error:", error);

@@ -63,6 +63,9 @@ export default function RootLayout({
     >
       <head>
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests;" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" />
+        <link rel="preconnect" href="https://generativelanguage.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
