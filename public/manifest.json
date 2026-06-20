@@ -1,0 +1,21 @@
+{
+  "name": "Pebbl.ai",
+  "short_name": "Pebbl",
+  "description": "Your digital AI pet rock and study companion for surviving competitive exams without burning out.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
