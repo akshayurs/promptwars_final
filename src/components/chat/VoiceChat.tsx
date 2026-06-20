@@ -15,6 +15,7 @@ interface ISpeechRecognition {
   continuous: boolean;
   interimResults: boolean;
   onresult: ((event: ISpeechRecognitionEvent) => void) | null;
+  onend: (() => void) | null;
   start: () => void;
   stop: () => void;
 }
@@ -33,6 +34,7 @@ export function VoiceChat() {
   const [inputText, setInputText] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [isVoiceMode, setIsVoiceMode] = useState(false);
+  const [autoSubmitTrigger, setAutoSubmitTrigger] = useState(0);
   const { profile, wellness, updateWellness, chatHistory: messages, addChatMessage } = useStore();
   
   // Web Speech API Ref
@@ -74,9 +76,25 @@ export function VoiceChat() {
             setIsVoiceMode(true);
           }
         };
+
+        recognitionRef.current.onend = () => {
+          setIsRecording(false);
+          setAutoSubmitTrigger(prev => prev + 1);
+        };
       }
     }
   }, [addChatMessage, messages.length]);
+
+  // Automatically submit the message when voice recording stops
+  useEffect(() => {
+    if (autoSubmitTrigger > 0 && isVoiceMode) {
+      // Small delay to ensure state updates
+      setTimeout(() => {
+        const sendBtn = document.getElementById('chat-send-btn');
+        if (sendBtn) sendBtn.click();
+      }, 300);
+    }
+  }, [autoSubmitTrigger]);
 
   const toggleRecording = () => {
     if (isRecording) {
@@ -248,6 +266,7 @@ ${historyStr}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             />
             <Button 
+              id="chat-send-btn"
               variant="primary"
               className="h-10 w-10 shrink-0 p-0 flex items-center justify-center rounded-full"
               onClick={handleSend}
