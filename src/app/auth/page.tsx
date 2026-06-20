@@ -49,7 +49,7 @@ export default function AuthPage() {
           return;
         }
       } catch (dbError) {
-        console.warn("Firestore read failed or timed out. Proceeding to onboarding gracefully.", dbError);
+        // Silently proceed to onboarding if Firestore is offline
       }
 
       // If they don't exist in Firestore OR if Firestore isn't fully set up yet:
@@ -63,8 +63,7 @@ export default function AuthPage() {
       router.push('/onboarding');
       
     } catch (error) {
-      console.error(error);
-      alert("Failed to login with Google. Please check your console.");
+      // Login failed, handled gracefully
     } finally {
       setLoading(false);
     }

@@ -19,7 +19,6 @@ export async function getGeminiResponse(prompt: string, context?: string): Promi
     });
     return response.text || "";
   } catch (error: unknown) {
-    console.error("Gemini API Error:", error);
     if (error instanceof Error) {
       return `Error generating response: ${error.message}`;
     }
@@ -54,7 +53,6 @@ Return a JSON object with EXACTLY the following structure (no markdown formattin
     const textResp = (response.text || "").trim().replace(/^```json/, '').replace(/```$/, '').trim();
     return JSON.parse(textResp);
   } catch (error: unknown) {
-    console.error("Sentiment Analysis Error:", error);
     return { rockHealthChange: 0, mossLevelChange: 0, analysis: "Failed to analyze sentiment." };
   }
 }
