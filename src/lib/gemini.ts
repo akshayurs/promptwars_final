@@ -14,7 +14,9 @@ export async function getGeminiResponse(prompt: string, context?: string): Promi
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: fullPrompt,
-      tools: [{ googleSearch: {} } as unknown as never],
+      config: {
+        tools: [{ googleSearch: {} }],
+      }
     });
     return response.text || "";
   } catch (error: unknown) {

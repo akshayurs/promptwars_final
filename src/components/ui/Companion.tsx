@@ -62,9 +62,9 @@ export function Companion() {
 
       {/* Bottom Quote Text */}
       <div className="absolute bottom-6 left-0 right-0 px-6 flex justify-center z-10">
-          <p className="text-sm font-medium text-foreground/70 italic max-w-[200px] leading-snug">
-            &quot;I&apos;m feeling a bit overwhelmed... maybe a quick break?&quot;
-          </p>
+        <p className="font-bold text-foreground/80 text-sm max-w-[200px] italic leading-snug drop-shadow-sm">
+          &quot;{quote}&quot;
+        </p>
       </div>
     </Card>
   );
